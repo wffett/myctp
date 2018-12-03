@@ -1,0 +1,5 @@
+main.out : main.cpp custommdspi.cpp makefile
+	g++ -o main.out main.cpp custommdspi.cpp \
+		-I./CTP_API_64/ \
+		-L./CTP_API_64 \
+		-lthostmduserapi
