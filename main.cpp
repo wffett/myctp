@@ -6,7 +6,7 @@ int main()
 {
 
 
-    char gMdFrontAddr[] = "tcp://218.202.237.33:10012";
+    char gMdFrontAddr[] = "tcp://180.168.146.187:13040";
     CThostFtdcMdSpi *pMdUserSpi = new CustomMdSpi();        
     CThostFtdcMdApi *g_pMdUserApi;             
     g_pMdUserApi = CThostFtdcMdApi::CreateFtdcMdApi();   
