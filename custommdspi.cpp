@@ -3,12 +3,11 @@
 #include <unordered_map>
 #include "custommdspi.h"
 
-// ---- 全局参数声明 ---- //
-CThostFtdcMdApi *g_pMdUserApi;            // 行情指针
-extern char gMdFrontAddr[];                      // 模拟行情前置地址
-TThostFtdcBrokerIDType gBrokerID;         // 模拟经纪商代码
-TThostFtdcInvestorIDType gInvesterID;     // 投资者账户名
-TThostFtdcPasswordType gInvesterPassword; // 投资者密码
+CThostFtdcMdApi *g_pMdUserApi;            
+extern char gMdFrontAddr[];              
+TThostFtdcBrokerIDType gBrokerID;       
+TThostFtdcInvestorIDType gInvesterID;  
+TThostFtdcPasswordType gInvesterPassword;
 
 
 void CustomMdSpi::OnFrontConnected()
@@ -22,14 +21,14 @@ void CustomMdSpi::OnFrontDisconnected(int nReason)
     std::cerr << "错误码： " << nReason << std::endl;
 }
 
-// 心跳超时警告
+
 void CustomMdSpi::OnHeartBeatWarning(int nTimeLapse)
 {
     std::cerr << "=====网络心跳超时=====" << std::endl;
     std::cerr << "距上次连接时间： " << nTimeLapse << std::endl;
 }
 
-// 登录应答
+
 void CustomMdSpi::OnRspUserLogin(
     CThostFtdcRspUserLoginField *pRspUserLogin,
     CThostFtdcRspInfoField *pRspInfo,
@@ -44,7 +43,7 @@ void CustomMdSpi::OnRspUserLogin(
         std::cout << "登录时间： " << pRspUserLogin->LoginTime << std::endl;
         std::cout << "经纪商： " << pRspUserLogin->BrokerID << std::endl;
         std::cout << "帐户名： " << pRspUserLogin->UserID << std::endl;
-        // 开始订阅行情
+
 //        int rt = g_pMdUserApi->SubscribeMarketData(g_pInstrumentID, instrumentNum);
 //        if (!rt)
 //            std::cout << ">>>>>>发送订阅行情请求成功" << std::endl;
@@ -55,7 +54,7 @@ void CustomMdSpi::OnRspUserLogin(
         std::cerr << "返回错误--->>> ErrorID=" << pRspInfo->ErrorID << ", ErrorMsg=" << pRspInfo->ErrorMsg << std::endl;
 }
 
-// 登出应答
+
 void CustomMdSpi::OnRspUserLogout(
     CThostFtdcUserLogoutField *pUserLogout,
     CThostFtdcRspInfoField *pRspInfo,
