@@ -3,9 +3,9 @@
 class CustomMdSpi: public CThostFtdcMdSpi
 {
 public:
-    virtual void OnFrontConnected();
+    void OnFrontConnected();
 
-    virtual void OnFrontDisconnected(int nReason);
+    void OnFrontDisconnected(int nReason);
 
     void OnHeartBeatWarning(int nTimeLapse);
 
